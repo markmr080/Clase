@@ -20,10 +20,7 @@ public class Animal {
 		System.out.print(nombre + " tiene " + edad + " años");	
 	}
 	
-	@Override
-	public String toString() {
-		return "nombre=" + nombre + ", edad=" + edad;
-	}
+	
 
 
 }
