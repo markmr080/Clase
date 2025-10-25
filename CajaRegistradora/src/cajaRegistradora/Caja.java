@@ -8,13 +8,12 @@ public class Caja {
 	
 
 	
-	public synchronized void cobrar (double cantidad, String nombre, double propina) {		
+	public synchronized void cobrar (double cantidad, double propina) {		
 		this.total = this.total + cantidad;
 		this.propinas = this.propinas + propina;
-		System.out.println("Empleado " + nombre + " cobro " + cantidad + "€ Y le han dado " + propina + "€ de propina." +  " Total en caja: " + getTotal() + "€");
 	}
 	
-	public double getPropinas() {
+	public synchronized double getPropinas() {
 		return Math.round(propinas * 100.0) / 100.0;
 	}
 

@@ -15,21 +15,27 @@ public class Empleado implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		synchronized (this) {	
 		for(int i = 0; i<5; i++) {
+			
 			double cobro = Math.round((Math.random() * (100 - 5 + 1) + 5) * 100.0) / 100.0;
 			double propinas = Math.round(Math.random() * 5 * 100.0) / 100.0;
-			this.propinasPropia += propinas;
+			this.propinasPropia += propinas;			
+	
+			cajaCompartida.cobrar(cobro, propinas);								
 			
-			cajaCompartida.cobrar(cobro, nombre, propinas);								
-			try {
-				Thread.sleep((long) (Math.random() * (2300 - 800 + 1) + 800));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("Empleado " + nombre + " cobro " + cobro + "€ Y le han dado " + propinas + "€ de propina." +  " Total en caja: " +  cajaCompartida.getTotal() + "€");
+			
+				try {
+					Thread.sleep((long) (Math.random() * (2300 - 800 + 1) + 800));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}	
 		}
 		getPropinasPropias(nombre, propinasPropia);
+		
 	}
 	
 	public void getPropinasPropias(String nombre, double propina) {				
