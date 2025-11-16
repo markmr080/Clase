@@ -1,13 +1,8 @@
 package main;
 
-import java.util.concurrent.Semaphore;
-
-
-
 public class Pajaro extends Animal{
 		
 	private int velocidad = 3;
-	private Semaphore tunel;
 	private int distanciaRecorrida = 0;	
 	private String nombre;
 	private boolean volar = false;
@@ -28,12 +23,7 @@ public class Pajaro extends Animal{
 		}else {	
 			if (volar()) {
 				if(volarHaciaAtras()) {
-				System.out.println(nombre +" volo hacia atras");
-				}else {
-					System.out.println(nombre + " volo hacia adelante");
 				}				
-			}else {
-				System.out.println(nombre + " camina");
 			}
 		}
 		avanzar(this.velocidad);	
@@ -55,8 +45,7 @@ public class Pajaro extends Animal{
 		
 	}
 	
-	public boolean volarHaciaAtras() {
-		
+	public boolean volarHaciaAtras() {	
 		int volarAlContrario = (int) (Math.random() * 10) + 1;			
 		if(volarAlContrario<4) {				
 			this.velocidad = -10;
@@ -70,23 +59,16 @@ public class Pajaro extends Animal{
 	
 	public void avanzar(int velocidad)  {
 		this.distanciaRecorrida += velocidad;
-		boolean viento = Animal.viento();
+		int viento = Animal.viento();
+		
+		
 		if (this.volar) {
-			if(viento) {
-				this.distanciaRecorrida += 5;
+			if(viento == 1) {
+				this.distanciaRecorrida += 5;				
 				
-				if (this.volarHaciaAtras) {
-					System.out.println("Viento a favor " + nombre  + " retrocedio 5 metros menos");
-				}else {
-					System.out.println("Viento a favor " + nombre  + " avanzo 5 metros mas");
-				}
-			}else {
+			}else if (viento == 2){
 				this.distanciaRecorrida -=5;
-				if (this.volarHaciaAtras) {
-					System.out.println("Viento en contra " + nombre  + " retrocedio 5 metros mas");
-				}else {
-					System.out.println("Viento en contra " + nombre  + " avanzo 5 metros menos");
-				}
+				
 			}
 		}
 	}
