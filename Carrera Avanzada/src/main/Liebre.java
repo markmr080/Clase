@@ -30,12 +30,15 @@ public class Liebre extends Animal{
 	
 	}
 	public boolean liebreDuerme() {
+		int viento = Animal.getViento();
+		
 		if (dormir > 0) {
 			dormir--;
 			this.velocidad = 0;
 			System.out.println("Liebre Duerme");
-			if (Animal.viento() == 1) {
+			if (viento == 1) {
 				dormir = 0;
+				System.out.println("Liebre se desperto por el viento a favor");
 			}
 			return true;
 		}

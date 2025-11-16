@@ -61,16 +61,14 @@ public class Pajaro extends Animal{
 	
 	public void avanzar(int velocidad)  {
 		this.distanciaRecorrida += velocidad;
-		int viento = Animal.viento();
-		
-		
+		int viento = Animal.getViento();
 		if (this.volar) {
 			if(viento == 1) {
 				this.distanciaRecorrida += 5;				
-				
+				System.out.println("Viento a favor");
 			}else if (viento == 2){
 				this.distanciaRecorrida -=5;
-				
+				System.out.println("Viento en contra");
 			}
 		}
 	}

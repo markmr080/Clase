@@ -22,7 +22,7 @@ public class Carrera implements Runnable{
 		
 		
 		while (animal.getDistanciaRecorrida()<300){	
-			
+			animal.setViento(viento());
 			animal.correr();
 			int d = animal.getDistanciaRecorrida();
 			try {					
@@ -70,6 +70,22 @@ public class Carrera implements Runnable{
 			}
 		}
 		
+	}
+	
+	public static int viento () {	
+		int seActivaViento = (int) (Math.random() * 10) + 1;
+		int direccionViento = (int) (Math.random() * 2);	
+			int viento;
+			if (seActivaViento>6) {	
+				if (direccionViento == 1) {
+					viento = 1;					
+				}else {
+					viento = 2;					
+				}	
+			}else {
+				viento = 3;			
+			}
+			return viento;
 	}
 	
 	
