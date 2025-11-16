@@ -26,7 +26,7 @@ public class Carrera implements Runnable{
 			animal.correr();
 			int d = animal.getDistanciaRecorrida();
 			try {					
-				if (d >= 50 && d<60){
+				if (d >= 35 && d<50){
 					if (!animalEnTunel) {
 						tunel.entrarTunel();
 						animalSalioTunel = false;
