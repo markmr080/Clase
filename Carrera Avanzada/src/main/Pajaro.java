@@ -23,9 +23,11 @@ public class Pajaro extends Animal{
 		}else {	
 			if (volar()) {
 				if(volarHaciaAtras()) {
-				}				
-			}
+					System.out.println("Pajaro volo hacia atras");
+				}
+			}				
 		}
+		
 		avanzar(this.velocidad);	
 		System.out.println(nombre + " lleva " + getDistanciaRecorrida() + " metros recorridos" );	
 	}
@@ -72,6 +74,7 @@ public class Pajaro extends Animal{
 			}
 		}
 	}
+	
 	
 	public int getDistanciaRecorrida() {
 		return distanciaRecorrida;

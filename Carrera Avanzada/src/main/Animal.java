@@ -44,8 +44,9 @@ public abstract class Animal {
 	public int getVelocidad() {		
 		return velocidad;
 	}
-	 public void salirDelTunelSiRetrocede(Tunel tunel) {
+	public void salirDelTunelSiRetrocede(Tunel tunel) {
 		 
-	 }
+	}
+
 
 }

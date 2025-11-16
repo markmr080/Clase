@@ -1,6 +1,5 @@
 package main;
 
-import java.util.concurrent.Semaphore;
 
 public class Carrera implements Runnable{
 	
@@ -8,12 +7,12 @@ public class Carrera implements Runnable{
 	
 	private Animal animal;
 	private Tunel tunel;
-	private Semaphore permiso;
 	
-	public Carrera(Animal animal, Tunel a, Semaphore permiso) {
+	
+	public Carrera(Animal animal, Tunel a) {
 		this.tunel = a;
 		this.animal = animal;
-		this.permiso = permiso;
+		
 	}
 	
 	@Override
@@ -22,10 +21,8 @@ public class Carrera implements Runnable{
 		boolean animalSalioTunel = false;
 		
 		
-		while (animal.getDistanciaRecorrida()<200){	
+		while (animal.getDistanciaRecorrida()<300){	
 			
-			
-			int pajaroVoloHaciaAtras = animal.getDistanciaRecorrida();
 			animal.correr();
 			int d = animal.getDistanciaRecorrida();
 			try {					
@@ -38,14 +35,19 @@ public class Carrera implements Runnable{
 						System.out.println(animal.getNombre() + " Entro en el tuenel");													
 						}
 				   }
+				}else if (d < 50 && animalEnTunel) {		    
+				    tunel.salirTunel();
+				    animalEnTunel = false;
+				    synchronized(System.out) {
+				        System.out.println(animal.getNombre() + " salió del túnel porque retrocedió demasiado");
+				    }
 				}
 								
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
-				
-			if (d > 150  && animalSalioTunel==false) {
+			if (d > 150  && animalSalioTunel==false) {			
 				tunel.salirTunel();
 				animalEnTunel = false;
 				animalSalioTunel = true;
@@ -54,7 +56,9 @@ public class Carrera implements Runnable{
 			    }
 			}
 			
-			if (d >= 200) {
+			
+			
+			if (d >= 300) {
 				System.out.println(animal.getNombre()+ " termino la carrera");
 			}
 					
