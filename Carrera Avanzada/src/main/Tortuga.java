@@ -6,9 +6,11 @@ public class Tortuga extends Animal{
 	private int distanciaRecorrida = 0;
 	private int velocidad = 2;
 	private String nombre;
-	public Tortuga(String nombre) {
+	private Viento viento;
+	public Tortuga(String nombre, Viento viento) {
 		super(nombre);
 		this.nombre = nombre;
+		this.viento = viento;
 	}
 	
 

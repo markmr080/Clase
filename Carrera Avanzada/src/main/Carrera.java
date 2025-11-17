@@ -7,11 +7,13 @@ public class Carrera implements Runnable{
 	
 	private Animal animal;
 	private Tunel tunel;
+	private Viento viento;
 	
 	
-	public Carrera(Animal animal, Tunel a) {
+	public Carrera(Animal animal, Tunel a, Viento viento) {
 		this.tunel = a;
 		this.animal = animal;
+		this.viento = viento;
 		
 	}
 	
@@ -22,7 +24,7 @@ public class Carrera implements Runnable{
 		
 		
 		while (animal.getDistanciaRecorrida()<300){	
-			animal.setViento(viento());
+			viento.viento();
 			animal.correr();
 			int d = animal.getDistanciaRecorrida();
 			try {					
@@ -72,21 +74,7 @@ public class Carrera implements Runnable{
 		
 	}
 	
-	public static int viento () {	
-		int seActivaViento = (int) (Math.random() * 10) + 1;
-		int direccionViento = (int) (Math.random() * 2);	
-			int viento;
-			if (seActivaViento>6) {	
-				if (direccionViento == 1) {
-					viento = 1;					
-				}else {
-					viento = 2;					
-				}	
-			}else {
-				viento = 3;			
-			}
-			return viento;
-	}
+
 	
 	
 }

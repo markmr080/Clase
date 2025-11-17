@@ -5,10 +5,10 @@ public class Liebre extends Animal{
 	private int distanciaRecorrida = 0;
 	private int avanzar = 4;
 	private int dormir = 0;
-	
-	public Liebre(String nombre) {
+	private Viento viento;
+	public Liebre(String nombre, Viento viento) {
 		super(nombre);
-		// TODO Auto-generated constructor stub
+		this.viento = viento;
 	}
 
 
@@ -30,7 +30,7 @@ public class Liebre extends Animal{
 	
 	}
 	public boolean liebreDuerme() {
-		int viento = Animal.getViento();
+		int viento = this.viento.getViento();
 		
 		if (dormir > 0) {
 			dormir--;
