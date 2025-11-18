@@ -17,12 +17,16 @@ public class Tortuga extends Animal{
 	@Override
 	public void correr() {
 		avanza(velocidad);
+		
 		System.out.println(nombre + " lleva " + getDistanciaRecorrida() + " metros recorridos");
 	}
 
 	
 	public void avanza (int velocidad) {
-		this.distanciaRecorrida += velocidad;		
+		this.distanciaRecorrida += velocidad;
+		if (getDistanciaRecorrida()%10 == 0) {
+			this.distanciaRecorrida += 3;
+		}
 	}
 	
 	public int getDistanciaRecorrida() {

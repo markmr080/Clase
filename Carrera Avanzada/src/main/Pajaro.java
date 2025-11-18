@@ -8,6 +8,7 @@
 		private boolean volar = false;
 		private boolean volarHaciaAtras = false;
 		private Viento viento;
+		private int contadorCaida = 5;
 		
 		
 		public Pajaro(String nombre, Viento viento) {
@@ -71,7 +72,13 @@
 					this.distanciaRecorrida -=5;
 					System.out.println("Viento en contra");
 				}
+			}else {
+				if(this.distanciaRecorrida%10 == 0) {
+					this.contadorCaida--;
+					System.out.println("Pajaro se cayo al suelo");
+				}
 			}
+			this.contadorCaida=5;
 		}
 		
 		
