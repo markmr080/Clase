@@ -24,18 +24,15 @@
 			if (this.distanciaRecorrida == 0) {
 				volar();
 			}else {	
-				if(pajaroSeResbala()) {
-					
+				if(pajaroSeResbala()) {				
 					if(!pajaroResbalo) {
 						System.out.println("Pajaro Resbalo");
 						pajaroResbalo = true;
 					}else {
-						System.out.println("Pajaro esta en el suelo aturdido");
-						
+						System.out.println("Pajaro esta en el suelo aturdido");					
 					}
 					return;
-				}
-				
+				}			
 				if (volar()) {
 					if(volarHaciaAtras()) {
 						System.out.println("Pajaro volo hacia atras");

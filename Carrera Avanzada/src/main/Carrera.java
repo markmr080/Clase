@@ -9,11 +9,11 @@ public class Carrera implements Runnable{
 	private Tunel tunel;
 	private Viento viento;
 	
-	
 	public Carrera(Animal animal, Tunel a, Viento viento) {
 		this.tunel = a;
 		this.animal = animal;
 		this.viento = viento;
+		
 		
 	}
 	
@@ -23,12 +23,19 @@ public class Carrera implements Runnable{
 		boolean animalSalioTunel = false;
 		
 		
-		while (animal.getDistanciaRecorrida()<300){	
+		while (animal.getDistanciaRecorrida()<300){		
+			if (!animalEnTunel) {
+				if (Animal.isGanoCarrera()) {
+					System.out.println(animal.getNombre() + " vio que perdio y se rindio");
+					break;
+				}		
+			}
+			
 			viento.viento();
 			animal.correr();
-			int d = animal.getDistanciaRecorrida();
+			int distancia = animal.getDistanciaRecorrida();
 			try {					
-				if (d >= 35 && d<50){
+				if (distancia >= 35 && distancia<50){
 					if (!animalEnTunel) {
 						tunel.entrarTunel();
 						animalSalioTunel = false;
@@ -37,7 +44,7 @@ public class Carrera implements Runnable{
 						System.out.println(animal.getNombre() + " Entro en el tunel");													
 						}
 				   }
-				}else if (d < 50 && animalEnTunel) {		    
+				}else if (distancia < 50 && animalEnTunel) {		    
 				    tunel.salirTunel();
 				    animalEnTunel = false;
 				    synchronized(System.out) {
@@ -49,7 +56,7 @@ public class Carrera implements Runnable{
 				e.printStackTrace();
 			}
 			
-			if (d > 150  && animalSalioTunel==false) {			
+			if (distancia > 150  && animalSalioTunel==false) {			
 				tunel.salirTunel();
 				animalEnTunel = false;
 				animalSalioTunel = true;
@@ -57,15 +64,14 @@ public class Carrera implements Runnable{
 			        System.out.println(animal.getNombre() + " Salio del tunel");
 			    }
 			}
-			
-			
-			
-			if (d >= 300) {
-				System.out.println(animal.getNombre()+ " termino la carrera");
+		
+			if (distancia >= 300) {			
+				Animal.setGanoCarrera(true);
+				System.out.println(animal.getNombre()+ " termino la carrera primero");		
 			}
 					
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
