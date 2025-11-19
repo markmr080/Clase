@@ -6,6 +6,7 @@ public class Liebre extends Animal{
 	private int avanzar = 4;
 	private int dormir = 0;
 	private Viento viento;
+	private int resbala = 0;
 	public Liebre(String nombre, Viento viento) {
 		super(nombre);
 		this.viento = viento;
@@ -17,18 +18,28 @@ public class Liebre extends Animal{
 		if (this.distanciaRecorrida == 0) {
 			avanza(velocidad);
 			return;
-		}	
+		}
+		
+		
 		if(liebreDuerme()) {
 			return;
 		}
+		if (liebreSeResbala()) {
+			return;
+		}
+		
 		if(liebreAvanza()) {
 			return;
 		}
 		
-		dormir = 10;
-		avanzar=4;
 	
+
+		dormir = 10;
+		avanzar=4;	
+		
+		
 	}
+	
 	public boolean liebreDuerme() {
 		int viento = this.viento.getViento();
 		
@@ -56,6 +67,16 @@ public class Liebre extends Animal{
 		return false;
 	}
 	
+	public boolean liebreSeResbala() {   
+		if(resbala>0) {
+			resbala--;
+			this.velocidad=0;
+			return true;
+		}
+		
+		return false;
+		
+	}
 	
 	public int getDistanciaRecorrida() {
 		return distanciaRecorrida;
@@ -68,7 +89,12 @@ public class Liebre extends Animal{
 
 
 	public void avanza (int velocidad) {
-		this.distanciaRecorrida += velocidad;		
+		this.distanciaRecorrida += velocidad;	
+		
+		if (this.distanciaRecorrida%10==0) {
+			resbala=5;
+			System.out.println("Liebre resbalo");
+		}
 	}
 	
 	

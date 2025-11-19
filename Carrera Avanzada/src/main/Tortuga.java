@@ -26,6 +26,7 @@ public class Tortuga extends Animal{
 		this.distanciaRecorrida += velocidad;
 		if (getDistanciaRecorrida()%10 == 0) {
 			this.distanciaRecorrida += 3;
+			System.out.println("Tortuga piso un charco y puso el modo Max Verstappen");
 		}
 	}
 	

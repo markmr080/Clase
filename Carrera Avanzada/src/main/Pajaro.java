@@ -8,7 +8,8 @@
 		private boolean volar = false;
 		private boolean volarHaciaAtras = false;
 		private Viento viento;
-		private int contadorCaida = 5;
+		private int contadorCaida = 0;
+		private boolean pajaroResbalo = false;
 		
 		
 		public Pajaro(String nombre, Viento viento) {
@@ -23,13 +24,29 @@
 			if (this.distanciaRecorrida == 0) {
 				volar();
 			}else {	
+				if(pajaroSeResbala()) {
+					
+					if(!pajaroResbalo) {
+						System.out.println("Pajaro Resbalo");
+						pajaroResbalo = true;
+					}else {
+						System.out.println("Pajaro esta en el suelo aturdido");
+						
+					}
+					return;
+				}
+				
 				if (volar()) {
 					if(volarHaciaAtras()) {
 						System.out.println("Pajaro volo hacia atras");
-					}
-				}				
+					}else {
+						System.out.println("Pajaro volo");
+					}					
+				}	
 			}
 			
+			
+			pajaroResbalo = false;
 			avanzar(this.velocidad);	
 			System.out.println(nombre + " lleva " + getDistanciaRecorrida() + " metros recorridos" );	
 		}
@@ -73,12 +90,21 @@
 					System.out.println("Viento en contra");
 				}
 			}else {
-				if(this.distanciaRecorrida%10 == 0) {
-					this.contadorCaida--;
+				if(this.distanciaRecorrida%10 == 0 && contadorCaida==0) {
+					contadorCaida = 5;			
 					System.out.println("Pajaro se cayo al suelo");
 				}
 			}
-			this.contadorCaida=5;
+			
+		}
+		
+		public boolean pajaroSeResbala() {   
+			if(contadorCaida>0) {
+				contadorCaida--;
+				this.velocidad=0;
+				return true;
+			}		
+			return false;		
 		}
 		
 		
