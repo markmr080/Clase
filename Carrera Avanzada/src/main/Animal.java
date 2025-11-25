@@ -43,8 +43,5 @@ public abstract class Animal {
 	public static void setGanoCarrera(boolean ganoCarrera) {
 		Animal.ganoCarrera = ganoCarrera;
 	};
-	
-	
-
 
 }

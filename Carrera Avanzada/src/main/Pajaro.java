@@ -103,12 +103,9 @@
 			}		
 			return false;		
 		}
-		
-		
+				
 		public int getDistanciaRecorrida() {
 			return distanciaRecorrida;
 		}
-		
-		
-		
+	
 	}

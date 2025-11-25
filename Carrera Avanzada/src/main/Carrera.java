@@ -39,17 +39,15 @@ public class Carrera implements Runnable{
 					if (!animalEnTunel) {
 						tunel.entrarTunel();
 						animalSalioTunel = false;
-						animalEnTunel = true;				
-						synchronized(System.out) {
-						System.out.println(animal.getNombre() + " Entro en el tunel");													
-						}
+						animalEnTunel = true;									
+							System.out.println(animal.getNombre() + " Entro en el tunel");													
+					
 				   }
 				}else if (distancia < 50 && animalEnTunel) {		    
 				    tunel.salirTunel();
-				    animalEnTunel = false;
-				    synchronized(System.out) {
+				    animalEnTunel = false;   
 				        System.out.println(animal.getNombre() + " es bobo y perdio el ticket");
-				    }
+				  
 				}
 								
 			} catch (InterruptedException e) {
@@ -79,8 +77,5 @@ public class Carrera implements Runnable{
 		}
 		
 	}
-	
 
-	
-	
 }
