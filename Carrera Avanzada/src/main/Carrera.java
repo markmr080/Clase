@@ -24,6 +24,7 @@ public class Carrera implements Runnable{
 		
 		
 		while (animal.getDistanciaRecorrida()<300){		
+			
 			if (!animalEnTunel) {
 				if (Animal.isGanoCarrera()) {
 					System.out.println(animal.getNombre() + " vio que perdio y se rindio");
@@ -34,20 +35,20 @@ public class Carrera implements Runnable{
 			viento.viento();
 			animal.correr();
 			int distancia = animal.getDistanciaRecorrida();
+			
 			try {					
 				if (distancia >= 35 && distancia<50){
 					if (!animalEnTunel) {
 						tunel.entrarTunel();
 						animalSalioTunel = false;
 						animalEnTunel = true;									
-							System.out.println(animal.getNombre() + " Entro en el tunel");													
-					
+							System.out.println(animal.getNombre() + " Entro en el tunel");																		
 				   }
+					
 				}else if (distancia < 50 && animalEnTunel) {		    
 				    tunel.salirTunel();
 				    animalEnTunel = false;   
-				        System.out.println(animal.getNombre() + " es bobo y perdio el ticket");
-				  
+				        System.out.println(animal.getNombre() + " es bobo y perdio el ticket");				  
 				}
 								
 			} catch (InterruptedException e) {

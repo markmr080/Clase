@@ -19,11 +19,11 @@ public class Liebre extends Animal{
 			avanza(velocidad);
 			return;
 		}
-		
-		
+				
 		if(liebreDuerme()) {
 			return;
 		}
+		
 		if (liebreSeResbala()) {
 			return;
 		}
@@ -53,6 +53,7 @@ public class Liebre extends Animal{
 			}
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -64,6 +65,7 @@ public class Liebre extends Animal{
 			avanza(velocidad);
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -78,6 +80,15 @@ public class Liebre extends Animal{
 		
 	}
 	
+	public void avanza (int velocidad) {
+		this.distanciaRecorrida += velocidad;	
+		
+		if (this.distanciaRecorrida%10==0) {
+			resbala=5;
+			System.out.println("Liebre resbalo");
+		}
+	}
+	
 	public int getDistanciaRecorrida() {
 		return distanciaRecorrida;
 	}
@@ -88,14 +99,7 @@ public class Liebre extends Animal{
 	}
 
 
-	public void avanza (int velocidad) {
-		this.distanciaRecorrida += velocidad;	
-		
-		if (this.distanciaRecorrida%10==0) {
-			resbala=5;
-			System.out.println("Liebre resbalo");
-		}
-	}
+	
 	
 	
 }
